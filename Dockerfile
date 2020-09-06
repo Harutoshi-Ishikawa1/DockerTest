@@ -1,9 +1,7 @@
-# testtest
-FROM ubuntu:16.04
+FROM centos:centos7
 
-RUN apt-get -y update && apt-get -y upgrade
-RUN apt-get -y install nginx
+RUN yum -y install httpd php
 
-EXPOSE 80
+COPY test.php /var/www/html/
 
-CMD ["nginx","-g","daemon off;"]
+CMD ["/usr/sbin/httpd","-DFOREGROUND"]
